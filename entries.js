@@ -21,7 +21,7 @@ const entries = [
 		title: "Simple calculator using Javacsript",
 		filename: "simple_calculator.html",
 		description: "This is a simple calculator which is Built using HTML5, Css and Javascript.",
-		author: "Gulshan Aggarwal",
+		author: "Gulshan Aggarwal ",
 		github: "Gulshanaggarwal"
 	},
 
