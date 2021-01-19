@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Simple Calculator using javascipt</title>
+
+	<!-- ******Inline Css********-->
+
+	<style >
+		*{
+	margin:0;
+	padding: 0;
+	list-style-type: none;
+	box-sizing: border-box;
+	text-decoration: none;
+	outline: none;
+}
+html{
+	font-size: 100%;
+}
+.container{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.result-screen{
+	width: 40%;
+	background-color: #12130F;
+	border: 3px solid white;
+	color:white;
+	height: 70px;
+	border: 4px solid orange;
+	display: block;
+	font-size: 200%;
+	padding: 0;
+	text-align: none;
+}
+.buttons{
+	width: 40%;
+	display: flex;
+}
+.box,.clear{
+	width: 100%;
+	height: 60px;
+	background-color: gold;
+	color: black;
+	border: 2px solid black;
+	font-size: 1.7rem;
+	text-align: center;
+	padding-top: 1rem;
+	cursor: pointer;
+}
+.equal{
+	width: 100%;
+	height: 60px;
+	background-color: green;
+	color: white;
+	border: 2px solid black;
+	font-size: 2rem;
+	text-align: center;
+	padding-top: 0.8rem;
+	transition: 0.4s ease-in-out;
+	cursor: pointer;
+	font-weight: bold;
+}
+.operator-box{
+	width: 80%;
+	height: 60px;
+	background-color: blue;
+	color: white;
+	font-size: 2rem;
+	text-align: center;
+	padding-top: 1rem;
+	border: 2px solid orange;
+	font-weight: bold;
+	cursor: pointer;
+}
+.box:hover{
+	background-image: linear-gradient(to right top, #e0d0d9, #cabfc9, #b5afb8, #a19fa7, #8e8f95, #87898e, #808488, #7a7e81, #7c8184, #7d8586, #7f8888, #828b8a);
+	color: white;
+}
+.operator-box:hover{
+	font-size: 2.5rem;
+	padding-top: 0.5rem;
+}
+.author{
+	font-size: 1.2rem;
+	color: grey;
+	margin: 0.5rem;
+}
+.author a{
+	text-decoration: underline;
+}
+.author a:hover{
+	text-decoration: underline;
+}
+/* media queries */
+
+/* ------------ max width 800 px------ */
+@media screen and (max-width: 800px){
+	.result-screen{
+		width: 30%;
+		height: 60px;
+		font-size: 150%;
+	}
+	.buttons{
+		width: 30%;
+	}
+	.box,.equal{
+		font-size: 1.3rem;
+	}
+	.clear{
+		font-size: 1.3rem;
+	}
+	.author{
+		font-size: 1rem;
+	}
+
+}
+
+/* ------------ max width 700 px------ */
+
+
+@media screen and (max-width: 700px){
+	.result-screen{
+		width: 30%;
+		height: 50px;
+		font-size: 80%;
+	}
+	.buttons{
+		width: 30%;
+	}
+	.box{
+		font-size: 0.8rem;
+		height: 50px;
+		padding-top: 0.7rem;
+	}
+	.equal{
+		font-size: 1.3rem;
+		height: 50px;
+	}
+	.clear{
+		font-size: 1rem;
+		height: 50px;
+	}
+
+	.operator-box{
+		height: 50px;
+		font-size: 1.4rem;
+		padding-top: 0.8rem;
+	}
+	.author{
+		font-size: 0.7rem;
+		text-align: center;
+	}
+
+}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<input type="text" class="result-screen" placeholder="Let's calculate!" autofocus="">
+		<div class="buttons">
+			<div class="box">9</div>
+			<div class="box">8</div>
+			<div class="box">7</div>
+			<div class="operator-box">+</div>
+		</div>
+		<div class="buttons">
+			<div class="box">6</div>
+			<div class="box">5</div>
+			<div class="box">4</div>
+			<div class="operator-box">-</div>
+		</div>
+		<div class="buttons">
+			<div class="box">3</div>
+			<div class="box">2</div>
+			<div class="box">1</div>
+			<div class="operator-box">*</div>
+		</div>
+		<div class="buttons">
+			<div class="box">0</div>
+			<div class="clear" style="background-color: red;">Clear</div>
+			<div class="equal">=</div>
+			<div class="operator-box">/</div>
+		</div>
+		<h2 class="author">Design & Developed by <a href="https://gulshanaggarwal.github.io/portfolio/" target="_blank">Gulshan Aggarwal</a></h2>
+	</div>
+
+	<!--******* JAVASCRIPT*******-->
+	<script>
+		window.addEventListener("load",()=>{
+	var number_button=document.querySelectorAll(".box");
+	var operator_button=document.querySelectorAll('.operator-box');
+	var display=document.querySelector(".result-screen");
+	var equal_button=document.querySelector(".equal");
+	var clear_button=document.querySelector(".clear");
+
+	// number button click or event
+	number_button.forEach((item)=>{
+		item.addEventListener('click',(event)=>{
+			display.value+=event.target.innerHTML;
+		});
+
+	});
+
+	// operator sign click or event
+
+	operator_button.forEach((item)=>{
+		item.addEventListener('click',(event)=>{
+			display.value+=event.target.innerHTML;
+		});
+
+	});
+
+
+	// clear function event
+	clear_button.addEventListener('click',()=>{
+		display.value='';
+
+	});
+
+	// equal function event
+	equal_button.addEventListener('click',()=>{
+		if(eval(display.value)===Infinity){
+			display.value="Infinite value...................";
+		}
+		else if(eval(display.value)===undefined){
+			display.value='Error!';
+			if(display.value==='Error!'){
+				display.addEventListener('mouseover',()=>{
+					setTimeout(()=>{
+						display.value='';
+						display.style.color='white';
+					},300);
+				})
+			}
+
+			display.style.color='red';
+			clear_button.addEventListener('click',()=>{
+		display.style.color='white';
+	
+
+
+	});
+		}
+			else{
+	display.value=eval(display.value);
+}
+		
+	});
+
+
+
+});
+	</script>
+</body>
+</html>
